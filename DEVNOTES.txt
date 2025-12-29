@@ -1,0 +1,33 @@
+2025-12-27 SETTING UP NOTES (arshacodes)
+- composer update command for missing vendor folder
+- npm install
+- npm install @inertiajs/vue3 (?)
+- installed language support for vue (vscode)
+- check .env file (commonly not included when committed to github) for APP_KEY and APP_URL
+- check .env file for DB CONSTANTS
+  DB_CONNECTION=mysql
+  DB_HOST=127.0.0.1
+  DB_PORT=3306
+  DB_DATABASE=pitx_system
+  DB_USERNAME=root
+  DB_PASSWORD=
+- run MySQL in XAMPP, create DB in MySQL
+- php artisan migrate:fresh --seed command to generate DB schema and seeds
+- php artisan key:generate command to generate APP_KEY
+- composer run dev
+- open https://localhost:8000/
+
+CHANGES
+- updated migrations and seeders (temporarily commented muna credentials ni cedie)
+- removed add_role_id_to_users migration
+- added UserSeeder, separate sa DatabaseSeeder (which declares all seeders dapat)
+- webp files ay mas magaan sabi ni google
+- updated ERD to fit laravel
+- npx shadcn@latest init command to add shadcn
+- added custom css (fonts, pitx brand colors, custom classes for tailwind-like experience)
+- NOT DONE WITH UI, login pa lang nagagawa since still trying to think of a UI na di mukhang default shadcn lang gamit T-T
+- some parts ng Login.Vue may not work. you can comment my work muna while you do your code. i haven't done the js part ng frontend e
+- .env file will be sent over sa discord
+
+TODO
+- clean up inertia js footprint visible with F12
