@@ -90,9 +90,14 @@ const submit = () => {
                             />
                         </div>
 
-                        <p vi-if="form.errors.email" class="mt-1 w-full">
-                            {{ form.errors.email }}
-                        </p>
+                        <Item v-if="form.errors.email" variant="error" size="sm" asChild class="mt-4">
+                            <ItemMedia class="items-center">
+                                <div class="flex gap-3">
+                                    <Info class="size-4 shrink-0 h-4 w-4"></Info>
+                                    {{ form.errors.email }}
+                                </div>
+                            </ItemMedia>
+                        </Item>
                     </div>
                     
                     <div>
@@ -107,25 +112,18 @@ const submit = () => {
                             />
                         </div>
 
-                        <p v-if="form.errors.password" class="mt-1 text-sm text-red-600">
-                            {{ form.errors.password }}
-                        </p>
-
-                        <Item variant="outline" size="sm" asChild>
-                            <ItemMedia>
-                                <Info></Info>
-                            </ItemMedia>
-                            <ItemContent>
-                                <ItemDescription>
+                        <Item v-if="form.errors.password" variant="error" size="sm" asChild class="mt-4">
+                            <ItemMedia class="items-center">
+                                <div class="flex gap-3">
+                                    <Info class="size-4 shrink-0 h-4 w-4"></Info>
                                     {{ form.errors.password }}
-                                    Test error
-                                </ItemDescription>
-                            </ItemContent>
+                                </div>
+                            </ItemMedia>
                         </Item>
 
                         <a
                             href="#"
-                            className="block mt-1 text-xs underline-offset-2 hover:underline text-end"
+                            className="block mt-1 text-xs underline-offset-2 hover:underline text-end font-semibold"
                         >
                             Forgot your password?
                         </a>
