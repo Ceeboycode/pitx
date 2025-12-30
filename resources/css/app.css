@@ -8,25 +8,29 @@
 
 /* CUSTOM CSS ====================================== */
 
-
 .pitx-blue {
-  color: #4d4d4d;
+  /* color: #4d4d4d; */
+  color: hsl(0, 0%, 30.2%);
 }
 
 .pitx-red {
-  color: #ea342f;
+  /* color: #ea342f; */
+  color: hsl(1.6, 81.66%, 55.1%);
 }
 
 .pitx-dk-grey {
-  color: #363739;
+  /* color: #363739; */
+  color: hsl(220, 2.7%, 21.76%);
 }
 
 .pitx-grey {
-  color: #4d4d4d;
+  /* color: #4d4d4d; */
+  color: hsl(0, 0%, 30.2%);
 }
 
 .pitx-lt-grey {
-  color: #606061;
+  /* color: #606061; */
+  color: hsl(240, 0.52%, 37.84%);
 }
 
 @font-face {
@@ -70,43 +74,56 @@
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 150%;
 }
 
 h6 {
   font-size: 1.25rem;
   font-family: Questrial;
   font-weight: bolder;
+  letter-spacing: -0.5%;
+  line-height: 150%;
 }
 
 h5 {
   font-size: 1.50rem;
   font-family: Questrial;
   font-weight: bolder;
+  letter-spacing: -1.5%;
+  line-height: 150%;
 }
 
 h4 {
   font-size: 1.75rem;
   font-family: Questrial;
   font-weight: bolder;
+  letter-spacing: -2%;
+  line-height: 130%;
 }
 
 h3 {
   font-size: 2rem;
   font-family: Questrial;
   font-weight: bolder;
+  /* letter-spacing: -2%; */
+  line-height: 130%;
 }
 
 h2 {
   font-size: 2.25rem;
   font-family: Questrial;
   font-weight: bolder;
+  /* letter-spacing: -2%; */
+  line-height: 110%;
 }
 
 h1 {
   font-size: 2.50rem;
   font-family: CalSans;
   font-weight: bolder;
+  /* letter-spacing: -2%; */
+  line-height: 100%;
 }
 
 /* ================================================= */

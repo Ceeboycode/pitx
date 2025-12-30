@@ -1,13 +1,52 @@
 <script setup lang="ts">
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
+import {
+    Form,
+    FormMessage,
+    FormItem,
+    FormLabel,
+    FormDescription,
+    FormControl,
+    FormField,
+    FormFieldArray
+} from "@/components/ui/form"
+import {
+    Card, 
+    CardContent, 
+    CardHeader, 
+    CardTitle 
+} from "@/components/ui/card"
+import { 
+    Item, 
+    ItemActions, 
+    ItemContent, 
+    ItemDescription, 
+    ItemFooter, 
+    ItemGroup, 
+    ItemHeader, 
+    ItemMedia, 
+    ItemMediaVariants, 
+    ItemSeparator, 
+    ItemTitle, 
+    ItemVariants 
+} from "@/components/ui/item"
+// import { Checkbox } from "@/components/ui/checkbox"
+import { 
+    Mail,
+    Lock, 
+    Info, 
+    InfoIcon, 
+    BadgeInfo, 
+    BadgeInfoIcon,
+    LucideInfo
+} from "lucide-vue-next"
 
 // =================================================
 
 import { useForm } from '@inertiajs/vue3';
 import LoginController from '@/actions/App/Http/Controllers/Auth/LoginController';
+// import ItemDescription from "@/components/ui/item/ItemDescription.vue"
 
 
 let form = useForm({
@@ -29,26 +68,74 @@ const submit = () => {
     </div>
     <div class="min-h-screen min-w-screen absolute inset-0 z-10 flex justify-center items-center lg:justify-end">
         <div class="lg:w-1/2 flex justify-center">
-            <Card class="w-[380px] shadow-xl">
-                <CardHeader class="">
-                    <img src="../../../public/assets/images/logo_text.png" alt="PITX LOGO" class="w-50">
-                    <!-- <h1 class="font-bold">Welcome back!</h1>
-                    <h2 class="font-bold">Welcome back!</h2>
-                    <h3 class="font-bold">Welcome back!</h3>
-                    <h4 class="font-bold">Welcome back!</h4>
-                    <h5 class="font-bold">Welcome back!</h5> -->
-                    <h6 class="font-bold">Welcome back!</h6>
-                    <p class="text-muted-foreground">Login</p>
+            <Card class="h-fit mx-auto absolute w-fit z-20 shadow">
+                <img src="../../../public/assets/images/logo_cropped.jpeg" alt="PITX LOGO" class="w-20 px-3 py-1">
+            </Card>
+            <Card class="w-[380px] pt-15 mt-10 shadow-xl">
+                <CardHeader class="text-center">
+                    <h6 class="font-bold">Login</h6>
+                    <p class="text-muted-foreground">Welcome back!</p>
                 </CardHeader>
 
                 <CardContent class="space-y-4">
+                    <div>
+                        <div class="relative">
+                            <Mail class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                            <Input 
+                                placeholder="Email" 
+                                v-model="form.email"
+                                type="email"
+                                class="pl-10"
+                                required
+                            />
+                        </div>
 
-                    <Input placeholder="Enter your email" v-model="email" />
-                    <Input type="password" placeholder="Enter your password" v-model="password" />
+                        <p vi-if="form.errors.email" class="mt-1 w-full">
+                            {{ form.errors.email }}
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <div class="relative">
+                            <Lock class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"/>
+                            <Input
+                                placeholder="Password"
+                                v-model="form.password"
+                                type="password"
+                                class="pl-10"
+                                required
+                            />
+                        </div>
+
+                        <p v-if="form.errors.password" class="mt-1 text-sm text-red-600">
+                            {{ form.errors.password }}
+                        </p>
+
+                        <Item variant="outline" size="sm" asChild>
+                            <ItemMedia>
+                                <Info></Info>
+                            </ItemMedia>
+                            <ItemContent>
+                                <ItemDescription>
+                                    {{ form.errors.password }}
+                                    Test error
+                                </ItemDescription>
+                            </ItemContent>
+                        </Item>
+
+                        <a
+                            href="#"
+                            className="block mt-1 text-xs underline-offset-2 hover:underline text-end"
+                        >
+                            Forgot your password?
+                        </a>
+
+                    </div>
 
                     <Button class="w-full mt-2" @click="submit">
                         Login
                     </Button>
+
                 </CardContent>
                 
             </Card>
