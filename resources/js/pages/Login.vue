@@ -12,32 +12,32 @@ import {
     FormFieldArray
 } from "@/components/ui/form"
 import {
-    Card, 
-    CardContent, 
-    CardHeader, 
-    CardTitle 
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle
 } from "@/components/ui/card"
-import { 
-    Item, 
-    ItemActions, 
-    ItemContent, 
-    ItemDescription, 
-    ItemFooter, 
-    ItemGroup, 
-    ItemHeader, 
-    ItemMedia, 
-    ItemMediaVariants, 
-    ItemSeparator, 
-    ItemTitle, 
-    ItemVariants 
+import {
+    Item,
+    ItemActions,
+    ItemContent,
+    ItemDescription,
+    ItemFooter,
+    ItemGroup,
+    ItemHeader,
+    ItemMedia,
+    ItemMediaVariants,
+    ItemSeparator,
+    ItemTitle,
+    ItemVariants
 } from "@/components/ui/item"
 // import { Checkbox } from "@/components/ui/checkbox"
-import { 
+import {
     Mail,
-    Lock, 
-    Info, 
-    InfoIcon, 
-    BadgeInfo, 
+    Lock,
+    Info,
+    InfoIcon,
+    BadgeInfo,
     BadgeInfoIcon,
     LucideInfo
 } from "lucide-vue-next"
@@ -81,8 +81,8 @@ const submit = () => {
                     <div>
                         <div class="relative">
                             <Mail class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            <Input 
-                                placeholder="Email" 
+                            <Input
+                                placeholder="Email"
                                 v-model="form.email"
                                 type="email"
                                 class="pl-10"
@@ -90,11 +90,11 @@ const submit = () => {
                             />
                         </div>
 
-                        <p vi-if="form.errors.email" class="mt-1 w-full">
+                        <p vi-if="form.errors.email" class="mt-1 w-full text-red-500">
                             {{ form.errors.email }}
                         </p>
                     </div>
-                    
+
                     <div>
                         <div class="relative">
                             <Lock class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"/>

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,8 @@ class UserSeeder extends Seeder
         //     'role_id' => 1
         // ]);
 
+        $adminRole = Role::where('slug', 'admin')->first();
+
         User::create([
             'f_name' => 'Arsha',
             'm_name' => null,
@@ -26,8 +29,8 @@ class UserSeeder extends Seeder
             'suffix' => null,
             'email' => 'arsha.tabree@gmail.com',
             'phone' => '09876543210',
-            'password' => '123',
-            'role_id' => 1
+            'password' => bcrypt('123'),
+            'role_id' => $adminRole->id,
         ]);
     }
 }

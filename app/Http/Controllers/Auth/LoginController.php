@@ -31,8 +31,8 @@ class LoginController extends Controller
 
         return redirect()->route(
             match ($role) {
-                'admin' => 'admin.dashboard',
-                'dispatcher' => 'dispatcher.dashboard',
+                'admin' => 'admin-dashboard',
+                'dispatcher' => 'dispatcher-dashboard',
                 default => 'login',
             }
         );
