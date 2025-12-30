@@ -43,14 +43,21 @@ const submit = () => {
 
                 <CardContent class="space-y-4">
 
-                    <Input placeholder="Enter your email" v-model="email" />
-                    <Input type="password" placeholder="Enter your password" v-model="password" />
+                    <Input placeholder="Enter your email" v-model="form.email" />
+                    <p v-if="form.errors.email" class="mt-1 text-sm text-red-600">
+                        {{ form.errors.email }}
+                    </p>
 
+                    <Input type="password" placeholder="Enter your password" v-model="form.password" />
+                    <p v-if="form.errors.password" class="mt-1 text-sm text-red-600">
+                        {{ form.errors.password }}
+                    </p>
+                    
                     <Button class="w-full mt-2" @click="submit">
                         Login
                     </Button>
                 </CardContent>
-                
+
             </Card>
         </div>
     </div>

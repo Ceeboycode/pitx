@@ -31,13 +31,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone')->unique();
             $table->string('password'); //di pa naka-hash
-            $table->integer('role_id');
 
             // $table->unsignedBigInteger('role_id');
             // $table->foreign('role_id')->references('id')->on('roles');
             // order ng table creation will be disrupted pag ni FK ko pa to sa roles kaya
             // wag na lang. default na kasi ginawa yung users agad e
-            
+
             $table->boolean('is_active')->default(true);
             $table->rememberToken();
             $table->timestamps();
