@@ -32,6 +32,5 @@ CHANGES
 - some parts ng Login.Vue may not work. you can comment my work muna while you do your code. i haven't done the js part ng frontend e
 - .env file will be sent over sa discord
 
-2025-12-30 
-CHANGES
+2025-12-30 CHANGES
 - restarted shadcn initialization
