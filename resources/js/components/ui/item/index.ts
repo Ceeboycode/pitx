@@ -20,10 +20,20 @@ export const itemVariants = cva(
         default: "bg-transparent",
         outline: "border-border",
         muted: "bg-muted/50",
+        error: `
+          bg-card
+          text-destructive
+          border border-destructive/40
+          [&_*svg]:text-destructive
+          justify-start
+        `
+        // error: "text-red-500 border border-red-500"
+
       },
       size: {
         default: "p-4 gap-4 ",
-        sm: "py-3 px-4 gap-2.5",
+        // sm: "py-3 px-4 gap-2.5",
+        sm: "py-2 px-3 gap-2.5",
       },
     },
     defaultVariants: {
