@@ -18,6 +18,12 @@ class RoleSeeder extends Seeder
             'updated_by' => 1
         ]);
 
+        Role::create([
+            'name' => 'Dispatcher',
+            'slug' => 'dispatcher',
+            'created_by' => 2,
+            'updated_by' => 2
+        ]);
         // Role::insert([
         //     ['name' => 'Admin', 'slug' => 'admin'],
         //     ['name' => 'Dispatcher', 'slug' => 'dispatcher'],

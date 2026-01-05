@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Dispatcher\CompanyController;
 use App\Http\Controllers\Dispatcher\DashboardController as DispatcherDashboard;
-
+use App\Http\Controllers\Dispatcher\VehicleTypeController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome');
@@ -24,16 +25,21 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboard::class)
         ->name('admin-dashboard');
 
-    Route::post('/logout', [LoginController::class, 'logout'])
-        ->name('logout');
-
     Route::get('/admin/users/create', [UserController::class, 'create'])
         ->name('admin-users-create');
     Route::post('/admin/users', [UserController::class, 'store'])
         ->name('admin-users-store');
+
 });
 
 Route::middleware(['auth', 'role:dispatcher'])->group(function () {
     Route::get('/dispatcher/dashboard', DispatcherDashboard::class)
         ->name('dispatcher-dashboard');
+
+    Route::resource('/dispatcher/vehicle-types', VehicleTypeController::class);
+    Route::resource('/dispatcher/companies', CompanyController::class);
 });
+
+Route::post('/logout', [LoginController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
