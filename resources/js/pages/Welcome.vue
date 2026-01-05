@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { login } from '@/routes';
-
+import { logout } from '@/actions/App/Http/Controllers/Auth/LoginController';
 </script>
 
 <template>
     <Head title="Welcome Page" />
-
     <div class="flex min-h-screen items-center justify-center bg-gray-100">
         <div class="w-full max-w-sm rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm">
             <!-- Title -->

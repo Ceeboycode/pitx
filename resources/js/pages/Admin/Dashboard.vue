@@ -20,6 +20,8 @@ const sidebarItems = [
   { title: 'Projects', href: '/projects' },
   { title: 'Team', href: '/team' }
 ]
+
+
 </script>
 
 <template>
@@ -56,4 +58,5 @@ const sidebarItems = [
       </div>
     </SidebarInset>
   </SidebarProvider>
+
 </template>

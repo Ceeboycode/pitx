@@ -24,6 +24,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboard::class)
         ->name('admin-dashboard');
 
+    Route::post('/logout', [LoginController::class, 'logout'])
+        ->name('logout');
+
     Route::get('/admin/users/create', [UserController::class, 'create'])
         ->name('admin-users-create');
     Route::post('/admin/users', [UserController::class, 'store'])
