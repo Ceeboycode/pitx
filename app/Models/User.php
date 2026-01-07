@@ -61,5 +61,14 @@ class User extends Authenticatable
     {
         return $this->role?->slug === $slug;
     }
+
+    public function dashboardRoute(): ?string
+    {
+        return match ($this->role?->slug) {
+            'admin' => route('admin-dashboard'),
+            'dispatcher' => route('dispatcher-dashboard'),
+            default => null,
+        };
+    }
     
 }

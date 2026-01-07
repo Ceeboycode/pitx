@@ -9,9 +9,16 @@ use App\Http\Controllers\Dispatcher\CompanyController;
 use App\Http\Controllers\Dispatcher\DashboardController as DispatcherDashboard;
 use App\Http\Controllers\Dispatcher\VehicleTypeController;
 
+
+
 Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect(auth()->user()->dashboardRoute());
+    }
+
     return Inertia::render('Welcome');
 })->name('home');
+
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
