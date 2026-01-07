@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from 'lucide-vue-next';
+import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles, CircleUser } from 'lucide-vue-next';
+import { logout } from '@/actions/App/Http/Controllers/Auth/LoginController';
+import { useForm } from '@inertiajs/vue3';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -15,7 +17,6 @@ import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/c
 
 const props = defineProps<{
     user: {
-        // name: string;
         fname: string;
         lname: string;
         email: string;
@@ -23,6 +24,11 @@ const props = defineProps<{
     };
 }>();
 
+const logoutForm = useForm({});
+
+const handleLogout = () => {
+    logoutForm.post(logout().url);
+};
 const { isMobile } = useSidebar();
 </script>
 
@@ -44,14 +50,14 @@ const { isMobile } = useSidebar();
                     </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
-                    class="w-[--reka-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                    class="w-[--reka-dropdown-menu-trigger-width] min-w-48 rounded-lg"
                     :side="isMobile ? 'bottom' : 'right'"
                     align="end"
                     :side-offset="4"
                 >
                     <DropdownMenuGroup>
                         <DropdownMenuItem>
-                            <BadgeCheck />
+                            <CircleUser />
                             Account
                         </DropdownMenuItem>
                         <DropdownMenuItem>
@@ -60,9 +66,11 @@ const { isMobile } = useSidebar();
                         </DropdownMenuItem>
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                        <LogOut />
-                        Log out
+                    <DropdownMenuItem @click="handleLogout"
+                            :disabled="logoutForm.processing"
+                            class="text-destructive">
+                            <LogOut />
+                            {{ logoutForm.processing ? 'Logging out...' : 'Log out' }}
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

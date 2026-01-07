@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CustomSidebar from '@/components/CustomSidebar.vue'
-import { LayoutDashboard, Users, BusFront, BookOpen, PieChart, Settings2, ListChecks } from 'lucide-vue-next'
+import { LayoutDashboard, Users, BusFront, BookOpen, PieChart, Settings2 } from 'lucide-vue-next'
 
 const data = {
   user: {
@@ -28,10 +28,11 @@ const data = {
   ],
   navModules: [
     { title: 'Dashboard', url: '#', icon: LayoutDashboard },
+    { title: 'Terminal Fee', url: '#', icon: BookOpen },
     {
-        title: 'Dispatch Management',
+        title: 'Reports',
         url: '#', 
-        icon: ListChecks,
+        icon: PieChart,
         // items: [
             //     {
             //         title: 'Tutorials',

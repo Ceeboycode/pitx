@@ -1,28 +1,6 @@
-<!-- <script setup lang="ts">
-import { logout } from '@/actions/App/Http/Controllers/Auth/LoginController';
-import { useForm } from '@inertiajs/vue3';
-
-const logoutForm = useForm({});
-
-const handleLogout = () => {
-    logoutForm.post(logout().url);
-};
-</script>
-
-
-
-<template>
-    <button
-        @click="handleLogout"
-        :disabled="logoutForm.processing"
-        class="mt-4 w-full rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
-    >
-        {{ logoutForm.processing ? 'Logging out...' : 'Logout' }}
-    </button>
-</template> -->
-
 <script setup lang="ts">
-import AdminSidebar from "@/components/Admin/AdminSidebar.vue"
+import { Head } from '@inertiajs/vue3'
+import DispatcherSidebar from "@/components/Dispatcher/DispatcherSidebar.vue"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -38,19 +16,21 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
-import UsersView from '@/pages/Admin/Users/Create.vue'
+import VehicleTypeView from '@/pages/Dispatcher/VehicleType/Create.vue'
+//tanggalin to, not for dispatchers
 
 import { ref } from 'vue'
 import type { Component } from 'vue'
 
 const views = {
   // dashboard: DashboardView,
-  users: UsersView,
+  vehicle_types: VehicleTypeView,
+  //tanggalin to, not for dispatchers
 }
 
 type ViewKey = keyof typeof views
 
-const currentView = ref<Component>(views.users)
+const currentView = ref<Component>(views.vehicle_types) //tanggalin to, not for dispatchers
 
 function switchView(viewKey: ViewKey) {
   const view = views[viewKey]
@@ -60,8 +40,9 @@ function switchView(viewKey: ViewKey) {
 </script>
 
 <template>
+  <Head title="Dispatcher" />
   <SidebarProvider>
-    <AdminSidebar @navigate="switchView"/>
+    <DispatcherSidebar @navigate="switchView"/>
     <SidebarInset>
       <header class="sticky top-0 z-20 bg-card flex h-16 shrink-0 items-center gap-2 border-b px-4 ">
         <SidebarTrigger class="-ml-1" />
