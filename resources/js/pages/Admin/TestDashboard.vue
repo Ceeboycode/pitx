@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import CustomSidebar from '@/components/CustomSidebar.vue'
+import TestAuthenticatedLayout from '@/layouts/TestAuthenticatedLayout.vue'
 import { LayoutDashboard, Users, BusFront, BookOpen, PieChart, Settings2 } from 'lucide-vue-next'
 
-import { create } from '@/routes/vehicle-types/create'
-
+import { index as vehicleTypeIndex} from '@/routes/vehicle-types/index'
+import { index as companyIndex} from '@/routes/companies/index'
 
 const data = {
   user: {
@@ -31,7 +31,7 @@ const data = {
   ],
   navModules: [
     { title: 'Dashboard', url: '#', icon: LayoutDashboard },
-    { title: 'User Management', url: index().url, icon: Users },
+    { title: 'User Management', url: '', icon: Users },
     {
         title: 'Vehicle Information',
         url: '#',
@@ -39,7 +39,7 @@ const data = {
         items: [
             {
                 title: 'Vehicle Types',
-                url: index().url,
+                url: vehicleTypeIndex,
             }
         ],
     },
@@ -57,12 +57,8 @@ const data = {
      }
   ]
 }
-
-// function handleNavigate(view: string) {
-//   console.log('Navigate to:', view)
-// }
 </script>
 
 <template>
-  <!-- <CustomSidebar :data="data" @navigate="handleNavigate" /> -->
+    <TestAuthenticatedLayout :data="data"></TestAuthenticatedLayout>
 </template>

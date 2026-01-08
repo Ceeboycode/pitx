@@ -8,6 +8,7 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        return inertia('Admin/Dashboard');
+        // return inertia('Admin/Dashboard');
+        return inertia('Admin/Test2Dashboard');
     }
 }

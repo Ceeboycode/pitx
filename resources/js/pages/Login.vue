@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3'
+import { Head, useForm } from '@inertiajs/vue3'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+
 import {
     Form,
     FormMessage,
@@ -111,14 +112,16 @@ const submit = () => {
                             {{ form.errors.email }}
                         </p> -->
 
-                        <Item v-if="form.errors.email" variant="error" size="sm" asChild class="mt-4">
-                            <ItemMedia class="items-center">
-                                <div class="flex gap-3">
-                                    <Info class="size-4 shrink-0 h-4 w-4"></Info>
-                                    {{ form.errors.email }}
-                                </div>
-                            </ItemMedia>
-                        </Item>
+                        <div v-if="form.errors.password" class="mt-2 p-3 bg-red-50 border border-red-200 rounded-lg">
+                            <Item v-if="form.errors.email" variant="error" size="sm" asChild class="mt-4">
+                                <ItemMedia class="items-center">
+                                    <div class="flex gap-3">
+                                        <Info class="size-4 shrink-0 h-4 w-4"></Info>
+                                        {{ form.errors.email }}
+                                    </div>
+                                </ItemMedia>
+                            </Item>
+                        </div>
 
                     </div>
 

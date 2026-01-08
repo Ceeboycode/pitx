@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/sidebar';
 import type { LucideIcon } from 'lucide-vue-next';
 import { ChevronRight } from 'lucide-vue-next';
+import { index } from '@/routes/vehicle-types';
 
 defineProps<{
     items: {
@@ -44,9 +45,9 @@ defineProps<{
                         <SidebarMenuSub>
                             <SidebarMenuSubItem v-for="subItem in item.items" :key="subItem.title">
                                 <SidebarMenuSubButton as-child>
-                                    <a :href="subItem.url">
+                                    <Link :href="subItem.url">
                                         <span>{{ subItem.title }}</span>
-                                    </a>
+                                    </Link>
                                 </SidebarMenuSubButton>
                             </SidebarMenuSubItem>
                         </SidebarMenuSub>

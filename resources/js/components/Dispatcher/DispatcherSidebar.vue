@@ -42,11 +42,11 @@ const data = {
   ]
 }
 
-function handleNavigate(view: string) {
-  console.log('Navigate to:', view)
-}
+// function handleNavigate(view: string) {
+//   console.log('Navigate to:', view)
+// }
 </script>
 
 <template>
-  <CustomSidebar :data="data" @navigate="handleNavigate" />
+  <!-- <CustomSidebar :data="data" @navigate="handleNavigate" /> -->
 </template>

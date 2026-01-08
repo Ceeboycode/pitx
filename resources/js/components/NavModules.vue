@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
-import type { LucideIcon } from 'lucide-vue-next';
+import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem } from '@/components/ui/sidebar';
+import { LucideIcon, ChevronRight } from 'lucide-vue-next';
+// import { CollapsibleTrigger, CollapsibleContent } from 'reka-ui';
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible' // adjust path
+
 const emit = defineEmits<{
     (e: 'navigate', view: string): void;
 }>();

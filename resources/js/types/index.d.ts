@@ -13,11 +13,11 @@ export interface Auth {
     user: AuthUser | null;
 }
 
-export type AppPageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
-    name: string;
-    quote: {
-        message: string;
-        author: string;
-    };
-    auth: Auth;
-};
+// export type AppPageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
+//     name: string;
+//     quote: {
+//         message: string;
+//         author: string;
+//     };
+//     auth: Auth;
+// };
