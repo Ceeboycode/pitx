@@ -106,7 +106,7 @@ const submit = () => {
                                 required
                             />
                         </div>
-                        <p v-if="form.errors.email" class="text-red-600 text-sm mt-1 flex items-center gap-1.5">
+                        <!-- <p v-if="form.errors.email" class="text-red-600 text-sm mt-1 flex items-center gap-1.5">
                             <Info class="h-4 w-4" />
                             {{ form.errors.email }}
                         </p> -->
