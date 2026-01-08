@@ -2,9 +2,6 @@
 import CustomSidebar from '@/components/CustomSidebar.vue'
 import { LayoutDashboard, Users, BusFront, BookOpen, PieChart, Settings2 } from 'lucide-vue-next'
 
-import { index as vehicleTypeIndex} from '@/routes/vehicle-types/index'
-import { index as companyIndex} from '@/routes/companies/index'
-
 const data = {
   user: {
     fname: 'alex',
@@ -31,22 +28,10 @@ const data = {
   ],
   navModules: [
     { title: 'Dashboard', url: '#', icon: LayoutDashboard },
-    { title: 'User Management', url: '', icon: Users },
-    {
-        title: 'Vehicle Information',
-        url: '#',
-        icon: BusFront ,
-        items: [
-            {
-                title: 'Vehicle Types',
-                url: vehicleTypeIndex,
-            }
-        ],
-    },
     { title: 'Terminal Fee', url: '#', icon: BookOpen },
     {
         title: 'Reports',
-        url: '#',
+        url: '#', 
         icon: PieChart,
         // items: [
             //     {

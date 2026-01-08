@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
         // ]);
 
         $adminRole = Role::where('slug', 'admin')->first();
+        // $adminRole = Role::where('slug', 'admin')->first();
 
         User::create([
             'f_name' => 'Arsha',
@@ -28,9 +29,31 @@ class UserSeeder extends Seeder
             'l_name' => 'Tabree',
             'suffix' => null,
             'email' => 'arsha.tabree@gmail.com',
-            'phone' => '09876543210',
+            'phone' => '09876543211',
             'password' => bcrypt('123'),
             'role_id' => $adminRole->id,
+        ]);
+
+        User::create([
+            'f_name' => 'Dispatcher',
+            'm_name' => null,
+            'l_name' => '1',
+            'suffix' => null,
+            'email' => 'dispatcher@gmail.com',
+            'phone' => '09876543212',
+            'password' => bcrypt('123'),
+            'role_id' => 2,
+        ]);
+
+        User::create([
+            'f_name' => 'Cashier',
+            'm_name' => null,
+            'l_name' => '1',
+            'suffix' => null,
+            'email' => 'cashier@gmail.com',
+            'phone' => '09876543213',
+            'password' => bcrypt('123'),
+            'role_id' => 3,
         ]);
     }
 }
