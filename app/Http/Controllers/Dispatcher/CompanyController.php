@@ -14,7 +14,11 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Dispatcher/Company/Index');
+        $companies = Company::with(['creator', 'updater'])->get();
+
+        return Inertia::render('Dispatcher/Company/Index', [
+            'companies' => $companies,
+        ]);
     }
 
     /**
@@ -30,7 +34,17 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:100|unique:companies,name',
+        ]);
+
+        Company::create([
+            'name' => $request->name,
+            'created_by' => auth()->id(),
+            'updated_by' => auth()->id(),
+        ]);
+
+        return to_route('companies.index')->with('success', 'Company created successfully.');
     }
 
     /**
@@ -46,7 +60,12 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return Inertia::render('Dispatcher/Company/Edit', [
+            'company' => $company->load([
+                'creator:id,f_name,l_name',
+                'updater:id,f_name,l_name',
+            ]),
+        ]);
     }
 
     /**
@@ -54,7 +73,16 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:100|unique:companies,name,' . $company->id,
+        ]);
+
+        $company->update([
+            'name' => $request->name,
+            'updated_by' => auth()->id(),
+        ]);
+
+        return to_route('companies.index')->with('success', 'Company updated successfully.');
     }
 
     /**
@@ -62,6 +90,8 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+
+        return to_route('companies.index')->with('success', 'Company deleted successfully.');
     }
 }

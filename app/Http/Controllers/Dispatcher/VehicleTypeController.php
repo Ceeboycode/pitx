@@ -45,7 +45,7 @@ class VehicleTypeController extends Controller
             'updated_by' => auth()->id(),
         ]);
 
-        return redirect()->route('vehicle-types.index')->with('success', 'Vehicle Type created successfully.');
+        return to_route('vehicle-types.index')->with('success', 'Vehicle Type created successfully.');
     }
 
     /**
@@ -80,7 +80,7 @@ class VehicleTypeController extends Controller
             'updated_by' => auth()->id(),
         ]);
 
-        return redirect()->route('vehicle-types.index')->with('success', 'Vehicle Type updated successfully.');
+        return to_route('vehicle-types.index')->with('success', 'Vehicle Type updated successfully.');
     }
 
     /**
@@ -88,6 +88,9 @@ class VehicleTypeController extends Controller
      */
     public function destroy(VehicleType $vehicleType)
     {
+    
+        $vehicleType->delete();
 
+        return to_route('vehicle-types.index')->with('success', 'Vehicle Type deleted successfully.');
     }
 }

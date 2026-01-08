@@ -18,10 +18,17 @@ return new class extends Migration
             $table->foreign('vehicle_type_id')->references('id')->on('vehicle_types'); //dagdagan na lang restrictions
             $table->integer('capacity');
             $table->boolean('is_active')->default(true);
-            $table->boolean('in_terminal')->default(false);
+            $table->boolean('in_terminal')->default(true);
             $table->timestamps();
-            $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->foreignId('created_by')
+                ->constrained('users')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+
+            $table->foreignId('updated_by')
+                ->constrained('users')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
         });
     }
 
