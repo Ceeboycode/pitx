@@ -1,62 +1,73 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3'
-import DispatcherSidebar from "@/components/Dispatcher/DispatcherSidebar.vue"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar"
+import DispatcherLayout from '@/layouts/DispatcherLayout.vue';
 
-import VehicleTypeView from '@/pages/Dispatcher/VehicleType/Create.vue'
-//tanggalin to, not for dispatchers
-
-import { ref } from 'vue'
-import type { Component } from 'vue'
-
-const views = {
-  // dashboard: DashboardView,
-  vehicle_types: VehicleTypeView,
-  //tanggalin to, not for dispatchers
-}
-
-type ViewKey = keyof typeof views
-
-const currentView = ref<Component>(views.vehicle_types) //tanggalin to, not for dispatchers
-
-function switchView(viewKey: ViewKey) {
-  const view = views[viewKey]
-  if (view) currentView.value = view
-}
-
+defineOptions({
+    layout: DispatcherLayout,
+});
 </script>
 
 <template>
-  <Head title="Dispatcher" />
-  <SidebarProvider>
-    <DispatcherSidebar @navigate="switchView"/>
-    <SidebarInset>
-      <header class="sticky top-0 z-20 bg-card flex h-16 shrink-0 items-center gap-2 border-b px-4 ">
-        <SidebarTrigger class="-ml-1" />
-        <Separator
-          orientation="vertical"
-          class="mr-2 data-[orientation=vertical]:h-4"
-        />
-      </header>
-      <div class="z-0 flex flex-1 flex-col gap-4 p-4">
-        <!-- <component class="min-h-[100vh] flex-1 rounded-xl md:min-h-min bg-red-300" :is="currentView" /> -->
-        <!-- ginawa ko lang red yung element para mas makita -->
-         <component class="min-h-[100vh] flex-1 rounded-xl md:min-h-min" :is="currentView" />
-      </div>
-    </SidebarInset>
-  </SidebarProvider>
+    <Head title="Dispatcher Dashboard" />
 
+    <div class="space-y-8">
+        <!-- Header -->
+        <div>
+            <h2 class="text-2xl font-bold">Dispatcher Dashboard</h2>
+            <p class="mt-2 text-gray-600">Welcome to the dispatcher dashboard. Here you can manage routes, vehicles, and settings.</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-lg bg-white p-5 shadow">
+                <p class="text-sm text-gray-500">Active Routes</p>
+                <p class="mt-2 text-3xl font-bold">12</p>
+            </div>
+
+            <div class="rounded-lg bg-white p-5 shadow">
+                <p class="text-sm text-gray-500">Vehicles On Road</p>
+                <p class="mt-2 text-3xl font-bold">34</p>
+            </div>
+
+            <div class="rounded-lg bg-white p-5 shadow">
+                <p class="text-sm text-gray-500">Delayed Deliveries</p>
+                <p class="mt-2 text-3xl font-bold text-red-600">3</p>
+            </div>
+
+            <div class="rounded-lg bg-white p-5 shadow">
+                <p class="text-sm text-gray-500">Available Drivers</p>
+                <p class="mt-2 text-3xl font-bold">8</p>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="rounded-lg bg-white shadow">
+            <div class="border-b px-6 py-4">
+                <h3 class="text-lg font-semibold">Recent Activity</h3>
+            </div>
+            <ul class="divide-y">
+                <li class="flex justify-between px-6 py-4">
+                    <span>Route #102 assigned to Vehicle A12</span>
+                    <span class="text-sm text-gray-500">10 min ago</span>
+                </li>
+                <li class="flex justify-between px-6 py-4">
+                    <span>Vehicle B07 marked as delayed</span>
+                    <span class="text-sm text-gray-500">30 min ago</span>
+                </li>
+                <li class="flex justify-between px-6 py-4">
+                    <span>Driver John D. checked in</span>
+                    <span class="text-sm text-gray-500">1 hour ago</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="rounded-lg bg-white p-6 shadow">
+            <h3 class="mb-4 text-lg font-semibold">Quick Actions</h3>
+            <div class="flex flex-wrap gap-4">
+                <button class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">Create Route</button>
+                <button class="rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700">Assign Vehicle</button>
+                <button class="rounded bg-gray-600 px-4 py-2 text-white hover:bg-gray-700">Manage Drivers</button>
+            </div>
+        </div>
+    </div>
 </template>

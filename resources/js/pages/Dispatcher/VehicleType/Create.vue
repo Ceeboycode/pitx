@@ -2,6 +2,8 @@
 import { useForm } from '@inertiajs/vue3';
 import { store } from '@/actions/App/Http/Controllers/Dispatcher/VehicleTypeController';
 import { index } from '@/routes/vehicle-types';
+import DispatcherLayout from '@/layouts/DispatcherLayout.vue';
+
 let form = useForm({
     name: '',
 });
@@ -10,6 +12,10 @@ const submit = () => {
     form.post(store().url);
     console.log(form);
 }
+
+defineOptions({
+    layout: DispatcherLayout,
+});
 </script>
 
 

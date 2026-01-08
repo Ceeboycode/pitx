@@ -1,167 +1,157 @@
 <script setup lang="ts">
 import { login } from '@/routes';
+import { onMounted } from 'vue';
+
+onMounted(() => {
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+        },
+        { threshold: 0.15 },
+    );
+
+    revealItems.forEach((el) => observer.observe(el));
+});
 </script>
 
 <template>
-  <Head title="Welcome to PITX" />
+    <Head title="Welcome to PITX" />
 
-   <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50"> 
+    <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
+        <!-- HERO -->
+        <section class="relative overflow-hidden">
+            <div
+                class="absolute inset-0 scale-105 animate-[pan_20s_ease-in-out_infinite_alternate] bg-cover bg-center"
+                style="background-image: url('/assets/images/bus.png')"
+            ></div>
 
-    <!-- HERO + NAVBAR (SHARED BACKGROUND) -->
-<section class="relative w-full overflow-hidden">
+            <div class="absolute inset-0 bg-white/20 backdrop-blur-sm"></div>
 
-  <!-- BACKGROUND IMAGE -->
-  <div
-    class="absolute inset-0 bg-cover bg-center"
-    style="background-image: url('/assets/images/bus.png')"
-  ></div>
+            <!-- NAVBAR -->
+            <nav class="relative z-10 animate-[fadeUp_0.8s_ease-out_forwards] px-8 py-6 opacity-0">
+                <div class="mx-auto flex max-w-7xl items-center justify-between">
+                    <img src="/assets/images/pitx_logo.png" class="h-10" alt="PITX Logo" />
+                </div>
+            </nav>
 
-  <!-- OVERLAY -->
-  <div class="absolute inset-0 bg-white/1 backdrop-blur-sm"></div>
+            <!-- HERO CONTENT -->
+            <div class="relative z-10 mx-auto max-w-7xl px-8 py-28">
+                <h1 class="mb-6 animate-[fadeUp_0.8s_ease-out_forwards] text-5xl leading-tight font-extrabold text-gray-900 opacity-0">
+                    Life Is Short.<br />
+                    <span class="text-red-600">The Station Is Busy.</span>
+                </h1>
 
-  <!-- NAVBAR -->
-  <nav class="relative z-10 w-full px-8 py-6">
-  <div class="mx-auto max-w-7xl flex items-center justify-between">
-    
-    <h1 class="text-2xl font-bold tracking-tight">
-      <span class="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
-        PITX
-      </span>
-    </h1>
+                <p class="mb-10 max-w-xl animate-[fadeUp_0.8s_ease-out_forwards] text-lg text-gray-700 opacity-0 [animation-delay:200ms]">
+                    A centralized operations system for PITX administrators, dispatchers, and cashiers—built for speed, accuracy, and control.
+                </p>
 
-    <Link
-      :href="login().url"
-      class="rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 px-8 py-3 text-white font-semibold shadow-lg hover:from-indigo-700 hover:to-blue-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
-    >
-      Login
-    </Link>
+                <div class="animate-[fadeUp_0.8s_ease-out_forwards] opacity-0 [animation-delay:400ms]">
+                    <Link
+                        :href="login().url"
+                        class="inline-flex animate-[pulseRed_2s_infinite] items-center gap-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 px-10 py-4 font-semibold text-white shadow-lg transition hover:scale-105 hover:from-red-700 hover:to-red-800 active:scale-95"
+                    >
+                        Access System
+                    </Link>
+                </div>
+            </div>
+        </section>
 
-  </div>
-</nav>
+        <!-- ROLES -->
+        <section class="border-t border-gray-100 bg-white py-24">
+            <div class="mx-auto max-w-6xl px-6">
+                <h2 class="mb-4 text-center text-3xl font-bold text-gray-800">System User Roles</h2>
+                <p class="mb-14 text-center text-gray-600">Each role is designed to support efficient and secure terminal operations.</p>
 
+                <div class="grid gap-8 md:grid-cols-3">
+                    <div class="reveal rounded-2xl border bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-md">
+                        <div class="mb-4 h-1 w-12 rounded-full bg-red-600"></div>
+                        <h3 class="mb-3 text-xl font-semibold">Administrator</h3>
+                        <p class="text-gray-600">Manages system configuration, user access, and overall PITX operations.</p>
+                    </div>
 
-  <!-- HERO CONTENT -->
-  <div class="relative z-10 mx-auto max-w-7xl px-8 py-24">
-    <div class="grid items-center gap-12 md:grid-cols-2">
+                    <div class="reveal rounded-2xl border bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-md">
+                        <div class="mb-4 h-1 w-12 rounded-full bg-red-600"></div>
+                        <h3 class="mb-3 text-xl font-semibold">Dispatcher</h3>
+                        <p class="text-gray-600">Oversees bus dispatching, schedules, and real-time terminal activity.</p>
+                    </div>
 
-      <!-- LEFT CONTENT -->
-      <div>
-        <h2 class="mb-4 text-4xl font-extrabold text-gray-900 leading-tight">
-          Life Is Short And <br />
-          <span class="text-indigo-600">The Station Is Busy!</span>
-        </h2>
+                    <div class="reveal rounded-2xl border bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-md">
+                        <div class="mb-4 h-1 w-12 rounded-full bg-red-600"></div>
+                        <h3 class="mb-3 text-xl font-semibold">Cashier</h3>
+                        <p class="text-gray-600">Handles ticketing, payments, and passenger transaction processing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <p class="mb-8 max-w-xl text-black-700 text-lg">
-          Easily manage bus dispatches, monitor real-time schedules,
-          and improve terminal operations at the Parañaque Integrated
-          Terminal Exchange.
-        </p>
+        <!-- MAP (FIXED & ROUNDED) -->
+        <section class="border-t border-gray-100 bg-white py-24">
+            <div class="mx-auto max-w-6xl px-6">
+                <h2 class="mb-4 text-center text-3xl font-bold text-gray-800">PITX Location</h2>
+                <p class="mb-12 text-center text-gray-600">Parañaque Integrated Terminal Exchange — main transport hub serving Metro Manila.</p>
 
-        <div class="flex gap-4">
-          <Link
-            :href="login().url"
-            class="rounded-lg bg-indigo-600 px-8 py-3 text-white font-medium shadow hover:bg-indigo-700 transition"
-          >
-            Get Started
-          </Link>
+                <div class="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                    <div class="aspect-[16/9]">
+                        <img src="/assets/images/map.png" alt="Map showing PITX location" class="h-full w-full object-contain" />
+                    </div>
+                </div>
 
-          <a
-            href="#features"
-            class="rounded-lg border border-gray-300 bg-white/70 px-8 py-3 text-gray-700 font-medium hover:bg-gray-100 transition"
-          >
-            Learn More
-          </a>
-        </div>
-      </div>
+                <p class="mt-4 text-center text-sm text-gray-500">Map data © OpenStreetMap contributors</p>
+            </div>
+        </section>
 
-      <!-- RIGHT SPACE -->
-      <div class="hidden md:block"></div>
+        <!-- SECURITY -->
+        <section class="bg-indigo-600 py-24">
+            <div class="reveal mx-auto max-w-4xl px-6 text-center text-white">
+                <h2 class="mb-6 inline-block rounded-full bg-white/10 px-6 py-2 text-3xl font-bold">Authorized Personnel Only</h2>
+                <p class="text-indigo-100">
+                    This system is restricted to official PITX staff. All access and activities are logged for security and compliance.
+                </p>
+            </div>
+        </section>
 
+        <!-- FOOTER -->
+        <footer class="bg-gray-900 py-6 text-center text-sm text-gray-400">
+            © 2026 Parañaque Integrated Terminal Exchange. All rights reserved.
+        </footer>
     </div>
-  </div>
-</section>
-
-  
-
-
-    <!-- FEATURES SECTION -->
-    <section id="features" class="bg-white py-20">
-      <div class="mx-auto max-w-6xl px-6">
-        <h3 class="mb-12 text-center text-3xl font-bold text-gray-800">
-          Key Features
-        </h3>
-
-        <div class="grid gap-8 md:grid-cols-3">
-          <div class="rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
-            <h4 class="mb-2 text-lg font-semibold text-gray-800">
-              Centralized Dispatch
-            </h4>
-            <p class="text-sm text-gray-600">
-              Automate bus dispatching to reduce manual errors and improve
-              terminal efficiency.
-            </p>
-          </div>
-
-          <div class="rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
-            <h4 class="mb-2 text-lg font-semibold text-gray-800">
-              Driver Access
-            </h4>
-            <p class="text-sm text-gray-600">
-              Drivers can view schedules and log dispatches anytime,
-              even without dispatchers.
-            </p>
-          </div>
-
-          <div class="rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
-            <h4 class="mb-2 text-lg font-semibold text-gray-800">
-              Real-time Monitoring
-            </h4>
-            <p class="text-sm text-gray-600">
-              Monitor live bus statuses, terminal activity, and alerts
-              in one dashboard.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section class="py-20">
-      <div class="mx-auto max-w-4xl px-6 text-center">
-        <h3 class="mb-4 text-3xl font-bold text-gray-800">
-          About PITX
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          The Parañaque Integrated Terminal Exchange is a centralized
-          transportation hub designed to organize bus operations and
-          improve commuter safety using modern digital systems.
-        </p>
-      </div>
-    </section>
-
-    <!-- CTA SECTION -->
-    <section class="bg-indigo-600 py-16">
-      <div class="mx-auto max-w-4xl px-6 text-center text-white">
-        <h3 class="mb-4 text-3xl font-bold">
-          Ready to Access the System?
-        </h3>
-        <p class="mb-6 text-indigo-100">
-          Log in to manage dispatches, track buses, and monitor terminal activity.
-        </p>
-
-        <Link
-          :href="login().url"
-          class="inline-block rounded-lg bg-white px-8 py-3 font-medium text-indigo-600 shadow hover:bg-gray-100 transition"
-        >
-          Login to PITX
-        </Link>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 py-6 text-center text-sm text-gray-400">
-      © 2026 Parañaque Integrated Terminal Exchange. All rights reserved.
-    </footer>
-
-  </div>
 </template>
+
+<style>
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pan {
+    from {
+        transform: scale(1.05) translateX(0);
+    }
+    to {
+        transform: scale(1.1) translateX(-20px);
+    }
+}
+
+@keyframes pulseRed {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 14px rgba(220, 38, 38, 0);
+    }
+}
+</style>

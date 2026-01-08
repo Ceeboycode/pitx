@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -9,121 +9,121 @@
 /* CUSTOM CSS ====================================== */
 
 .pitx-blue {
-  /* color: #4d4d4d; */
-  color: hsl(0, 0%, 30.2%);
+    /* color: #4d4d4d; */
+    color: hsl(0, 0%, 30.2%);
 }
 
 .pitx-red {
-  /* color: #ea342f; */
-  color: hsl(1.6, 81.66%, 55.1%);
+    /* color: #ea342f; */
+    color: hsl(1.6, 81.66%, 55.1%);
 }
 
 .pitx-dk-grey {
-  /* color: #363739; */
-  color: hsl(220, 2.7%, 21.76%);
+    /* color: #363739; */
+    color: hsl(220, 2.7%, 21.76%);
 }
 
 .pitx-grey {
-  /* color: #4d4d4d; */
-  color: hsl(0, 0%, 30.2%);
+    /* color: #4d4d4d; */
+    color: hsl(0, 0%, 30.2%);
 }
 
 .pitx-lt-grey {
-  /* color: #606061; */
-  color: hsl(240, 0.52%, 37.84%);
+    /* color: #606061; */
+    color: hsl(240, 0.52%, 37.84%);
 }
 
 @font-face {
-  font-family: Inter;
-  src: url('../../public/assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf');
+    font-family: Inter;
+    src: url('../../public/assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf');
 }
 
 @font-face {
-  font-family: InterItalic;
-  src: url('../../public/assets/fonts/Inter/Inter-Italic-VariableFont_opsz\,wght.ttf');
+    font-family: InterItalic;
+    src: url('../../public/assets/fonts/Inter/Inter-Italic-VariableFont_opsz\,wght.ttf');
 }
 
 @font-face {
-  font-family: Questrial;
-  src: url('../../public/assets/fonts/Questrial/Questrial-Regular.ttf');
+    font-family: Questrial;
+    src: url('../../public/assets/fonts/Questrial/Questrial-Regular.ttf');
 }
 
 @font-face {
-  font-family: CalSans;
-  src: url('../../public/assets/fonts/Cal_Sans/CalSans-Regular.ttf');
+    font-family: CalSans;
+    src: url('../../public/assets/fonts/Cal_Sans/CalSans-Regular.ttf');
 }
 
 .Inter {
-  font-family: Inter;
+    font-family: Inter;
 }
 
 .InterItalic {
-  font-family: InterItalic;
+    font-family: InterItalic;
 }
 
 .Questrial {
-  font-family: Questrial;
+    font-family: Questrial;
 }
 
 .CalSans {
-  font-family: CalSans;
+    font-family: CalSans;
 }
 
 * {
-  font-family: Inter;
+    font-family: Inter;
 }
 
 p {
-  font-size: 16px;
-  line-height: 150%;
+    font-size: 16px;
+    line-height: 150%;
 }
 
 h6 {
-  font-size: 1.25rem;
-  font-family: Questrial;
-  font-weight: bolder;
-  letter-spacing: -0.5%;
-  line-height: 150%;
+    font-size: 1.25rem;
+    font-family: Questrial;
+    font-weight: bolder;
+    letter-spacing: -0.5%;
+    line-height: 150%;
 }
 
 h5 {
-  font-size: 1.50rem;
-  font-family: Questrial;
-  font-weight: bolder;
-  letter-spacing: -1.5%;
-  line-height: 150%;
+    font-size: 1.5rem;
+    font-family: Questrial;
+    font-weight: bolder;
+    letter-spacing: -1.5%;
+    line-height: 150%;
 }
 
 h4 {
-  font-size: 1.75rem;
-  font-family: Questrial;
-  font-weight: bolder;
-  letter-spacing: -2%;
-  line-height: 130%;
+    font-size: 1.75rem;
+    font-family: Questrial;
+    font-weight: bolder;
+    letter-spacing: -2%;
+    line-height: 130%;
 }
 
 h3 {
-  font-size: 2rem;
-  font-family: Questrial;
-  font-weight: bolder;
-  /* letter-spacing: -2%; */
-  line-height: 130%;
+    font-size: 2rem;
+    font-family: Questrial;
+    font-weight: bolder;
+    /* letter-spacing: -2%; */
+    line-height: 130%;
 }
 
 h2 {
-  font-size: 2.25rem;
-  font-family: Questrial;
-  font-weight: bolder;
-  /* letter-spacing: -2%; */
-  line-height: 110%;
+    font-size: 2.25rem;
+    font-family: Questrial;
+    font-weight: bolder;
+    /* letter-spacing: -2%; */
+    line-height: 110%;
 }
 
 h1 {
-  font-size: 2.50rem;
-  font-family: CalSans;
-  font-weight: bolder;
-  /* letter-spacing: -2%; */
-  line-height: 100%;
+    font-size: 2.5rem;
+    font-family: CalSans;
+    font-weight: bolder;
+    /* letter-spacing: -2%; */
+    line-height: 100%;
 }
 
 /* ================================================= */
@@ -240,14 +240,14 @@ h1 {
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+    body {
+        @apply bg-background text-foreground;
     }
 
-  /* CUSTOM CSS */
+    /* CUSTOM CSS */
 
-  /* ========== */
+    /* ========== */
 }
