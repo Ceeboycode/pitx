@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Head } from '@inertiajs/vue3'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -47,7 +48,6 @@ import { ref } from 'vue'
 
 // =================================================
 
-import { useForm } from '@inertiajs/vue3';
 import LoginController from '@/actions/App/Http/Controllers/Auth/LoginController';
 
 let form = useForm({
@@ -61,8 +61,8 @@ const togglePasswordVisibility = () => {
 }
 
 const submit = () => {
-    form.submit(LoginController.login())
-}
+    form.submit(LoginController.login());
+};
 </script>
 
 <template>
@@ -109,7 +109,17 @@ const submit = () => {
                         <p v-if="form.errors.email" class="text-red-600 text-sm mt-1 flex items-center gap-1.5">
                             <Info class="h-4 w-4" />
                             {{ form.errors.email }}
-                        </p>
+                        </p> -->
+
+                        <Item v-if="form.errors.email" variant="error" size="sm" asChild class="mt-4">
+                            <ItemMedia class="items-center">
+                                <div class="flex gap-3">
+                                    <Info class="size-4 shrink-0 h-4 w-4"></Info>
+                                    {{ form.errors.email }}
+                                </div>
+                            </ItemMedia>
+                        </Item>
+
                     </div>
 
                     <!-- Password Input -->

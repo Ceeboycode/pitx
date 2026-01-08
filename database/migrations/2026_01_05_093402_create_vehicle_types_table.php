@@ -15,11 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->timestamps();
-            $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->foreignId('created_by')
+                ->constrained('users')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+
+            $table->foreignId('updated_by')
+                ->constrained('users')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
         });
     }
-  
+
     /**
      * Reverse the migrations.
      */
